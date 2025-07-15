@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
+import { ModalProvider } from "@/providers/modal-provider";
+import prismadb from "@/lib/prismadb";
+import { ToastProvider } from "@/providers/toast-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
+
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,13 +36,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+      <ClerkProvider>
+        <html  lang="en" suppressHydrationWarning>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+            >
+              <ToastProvider></ToastProvider>
+              <ModalProvider></ModalProvider>
+              {children}
+            </ThemeProvider>
+          </body>
+        </html>
+    </ClerkProvider>
   );
 }
