@@ -1,4 +1,10 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## About this application 
+
+EcomSaaSPlatform is a multi-tenant SaaS application that lets users create and manage multiple stores.
+Each store has its own products, categories, sizes, colors, billboards, customers, and orders,
+and exposes secure backend APIs for building custom e-commerce storefronts.
+Includes an example Storefront (in my another repo-see on my profile) implementation to demonstrate API integration.
 
 ## Getting Started
 
