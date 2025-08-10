@@ -4,9 +4,9 @@ import { redirect } from "next/navigation";
 import { SettingsForm } from "./components/Settings-form";
 
 export default async function Settings({params} : {
-    params : {
+    params : Promise<{
         storeId : string
-    }
+    }>
 })
 {
     const {userId} = await auth();

@@ -3,9 +3,9 @@ import { SizeForm } from "./components/Size-form";
 import { Separator } from "@/components/ui/separator";
 
 export default async function SizePage({params} : {
-    params : {
+    params : Promise<{
         sizeId : string
-    }
+    }>
 })
 { 
     const {sizeId} =  await params;

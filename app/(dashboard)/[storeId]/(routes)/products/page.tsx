@@ -7,9 +7,9 @@ import {  ProductColumn } from './components/columns';
 
 
 export default async function ProductsPage({params} :{
-    params : {
+    params : Promise<{
         storeId : string
-    }
+    }>
 })
 {
     const {storeId} = await params;

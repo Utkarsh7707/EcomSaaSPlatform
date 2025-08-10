@@ -6,9 +6,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 
 
-export async function GET(req : NextRequest , {params} : {params :{
+export async function GET(req : NextRequest , {params} : {params :Promise<{
     productId : string
-}})
+}>})
 {
     try{
         const {productId} = await params;
@@ -37,10 +37,10 @@ export async function GET(req : NextRequest , {params} : {params :{
     }
 }
 
-export async function PATCH(req : NextRequest , {params} : {params :{
+export async function PATCH(req : NextRequest , {params} : {params :Promise<{
     storeId : string,
     productId : string
-}})
+}>})
 {
     try{
         const {userId} = await auth();
@@ -144,10 +144,10 @@ export async function PATCH(req : NextRequest , {params} : {params :{
 }
 
 
-export async function DELETE(req : NextRequest , {params} : {params :{
+export async function DELETE(req : NextRequest , {params} : {params :Promise<{
     productId : string
     storeId : string
-}})
+}>})
 {
     try{
         const {userId} = await auth();

@@ -3,9 +3,9 @@ import { auth } from "@clerk/nextjs/server"
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req :NextRequest, {params} : {
-    params : {
+    params : Promise<{
         storeId : string
-    } })
+    }> })
 {
     try
     {
@@ -59,9 +59,9 @@ export async function POST(req :NextRequest, {params} : {
 
 
 export async function GET(req :NextRequest, {params} : {
-    params : {
+    params : Promise<{
         storeId : string
-    }
+    }>
 })
 {
     try

@@ -3,13 +3,13 @@ import { CategoryForm } from "./components/Category-form";
 import { Separator } from "@/components/ui/separator";
 
 export default async function CategoryPage({params} : {
-    params : {
+    params : Promise <{
         categoryId : string,
         storeId : string
-    }
+    }>
 })
 { 
-    const {categoryId , storeId} =  await params;
+    const {categoryId , storeId} =   await params;
     const category = await prismadb.category.findUnique(
         {
             where :{

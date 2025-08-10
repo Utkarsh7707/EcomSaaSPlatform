@@ -7,9 +7,9 @@ import { formatter } from '@/lib/utils';
 
 
 export default async function OrdersPage({params} :{
-    params : {
+    params : Promise<{
         storeId : string
-    }
+    }>
 })
 {
     const {storeId} = await params;

@@ -15,9 +15,9 @@ import { CreditCard, IndianRupee, Package } from "lucide-react"
 //         storeId :string
 //     }}
 // }
-export default async function DashboardPage( {params} : {params : {
+export default async function DashboardPage( {params} : {params : Promise<{
         storeId :string
-    }})
+    }>})
 {
     const {storeId} = await params;
     const totalRevenue = await getTotalRevenue(storeId);

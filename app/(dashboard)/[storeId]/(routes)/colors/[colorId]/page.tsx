@@ -3,12 +3,12 @@ import { ColorForm } from "./components/Size-form";
 import { Separator } from "@/components/ui/separator";
 
 export default async function ColorPage({params} : {
-    params : {
+    params : Promise<{
         colorId : string
-    }
+    }>
 })
 { 
-    const {colorId} =  await params;
+    const {colorId} =   await params;
     const color = await prismadb.color.findUnique(
         {
             where :{

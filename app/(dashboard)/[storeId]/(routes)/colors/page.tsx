@@ -6,12 +6,12 @@ import { ColorColumn } from './components/columns';
 
 
 export default async function ColorsPage({params} :{
-    params : {
+    params : Promise<{
         storeId : string
-    }
+    }>
 })
 {
-    const {storeId} = await params;
+    const {storeId} =  await params;
     const colors = await prismadb.color.findMany(
         {
             where : {

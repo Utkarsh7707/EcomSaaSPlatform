@@ -3,9 +3,9 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/dist/server/api-utils";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function PATCH(req : NextRequest , {params} : {params :{
+export async function PATCH(req : NextRequest , {params} : {params : Promise<{
     storeId : string
-}})
+}>})
 {
     try{
         const {userId} = await auth();
@@ -43,23 +43,24 @@ export async function PATCH(req : NextRequest , {params} : {params :{
 }
 
 
-export async function DELETE(req : NextRequest , {params} : {params :{
+export async function DELETE(req : NextRequest , {params} : {params : Promise<{
     storeId : string
-}})
+}>})
 {
     try{
+        const {storeId} = await params;
         const {userId} = await auth();
         if(!userId)
         {
             return new NextResponse("Unauthorized" , {status:401});
         }
-        if(!params.storeId)
+        if(!storeId)
         {
             return new NextResponse("Store Id is reqired", {status:400});
         }
         const store = await prismadb.store.deleteMany({
             where:{
-                id : params.storeId,
+                id : storeId,
                 userId : userId
             }
         });
